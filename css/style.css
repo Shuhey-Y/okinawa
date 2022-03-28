@@ -1,0 +1,640 @@
+@charset "utf-8";
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+   color: #333;
+}
+
+h1{
+    font-family: 'Yellowtail', cursive;
+  font-size: 6vw;
+
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_ttl{
+  width: 100%;
+}
+
+.header_ttl h1{
+  margin: 10px 5px 10px;
+}
+.hamburger{
+  display: none;
+}
+
+.header_list{
+  text-align: right;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.header_list ul{
+  justify-content: flex-end;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.header_list li{
+  display: inline-block;
+  font-size: 1.3vw;
+  padding: 0 8px 0;
+}
+
+.header_list ul li a{
+  color: #333;
+}
+
+.header_list ul li a:hover{
+  color: #ddd;
+}
+
+.header_list ul i{
+  margin-right: 5px;
+}
+
+.gallery{
+columns: 4;/*段組みの数*/
+padding:0 15px;/*ギャラリー左右に余白をつける*/
+}
+
+.gallery li {
+    margin-bottom: 20px;/*各画像下に余白をつける*/
+}
+
+/*ギャラリー内のイメージは横幅100%にする*/
+.gallery img{
+  width:100%;
+  height:auto;
+  vertical-align: bottom;/*画像の下にできる余白を削除*/}
+
+/*　横幅900px以下の段組み設定　*/
+@media only screen and (max-width: 900px) {
+  .gallery{
+  columns:3;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .gallery{
+  columns: 2;
+  }
+}
+
+
+/*========= レイアウトのためのCSS ===============*/
+
+.sec01 ul{
+  margin:0;
+  padding: 0;
+  list-style: none;
+}
+
+.sec01 a{
+  color: #333;
+}
+
+.sec01 a:hover,
+a:active{
+  text-decoration: none;
+}
+/*
+sec01 h1{
+  text-align: center;
+  font-size:6vw;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin:30px 0;
+}
+*/
+sec01 p{
+  margin:0 10px 10px 10px;
+  word-wrap : break-word;
+}
+
+/*画像を出現させるアニメーションCSS*/
+
+.flipLeft{
+animation-name: flipLeft;
+animation-duration:0.5s;
+animation-fill-mode:forwards;
+perspective-origin: left center;
+opacity: 0;
+}
+
+@keyframes flipLeft{
+  from {
+   transform: perspective(600px) translate3d(0, 0, 0) rotateY(30deg);
+  opacity: 0;
+  }
+
+  to {
+  transform: perspective(600px) translate3d(0, 0, 0) rotateY(0deg);
+  opacity: 1;
+  }
+}
+
+
+
+
+section h1{
+  text-align: center;
+  margin: 150px 0 50px;
+}
+
+
+.wrapper{
+  width:100%;
+  max-width: 960px;
+  margin:30px auto;
+    background:#ddd;
+}
+
+.tab{
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+}
+.tab li a{
+  display: block;
+  background:#fff;
+  margin:0 2px 0 0;
+  padding:10px 20px;
+  border: solid 2px #ddd;
+  border-bottom: 0px;
+  border-radius: 5px 5px 0 0;
+}
+
+
+.area ul{
+  margin: 0;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255,0.7);
+}
+
+.area li{
+  padding: 10px 10px 20px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#okinawa{
+  background-image:url(../img/tacos.JPG);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+}
+#steak {
+  background-image:url(../img/steak.JPG);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+}
+#ramen {
+  background-image:url(../img/syuntaku.JPG);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+}
+#other {
+  background-image:url(../img/humberger.JPG);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+}
+
+
+/*liにactiveクラスがついた時の形状*/
+.tab li.active a{
+  background:#ddd;
+}
+
+
+/*エリアの表示非表示と形状*/
+.area {
+  display: none;/*はじめは非表示*/
+  opacity: 0;/*透過0*/
+  background: #fff;
+  padding:0;
+}
+
+/*areaにis-activeというクラスがついた時の形状*/
+.area.is-active {
+    display: block;/*表示*/
+    animation-name: displayAnime;/*ふわっと表示させるためのアニメーション*/
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes displayAnime{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.swiper {
+  width: 100%;
+  height: 300px;
+}
+
+.swiper-wrap {
+  margin: 0 calc(50% - 50vw);
+  max-width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+.swiper-slide-active .slide-img,
+.swiper-slide-duplicate-active .slide-img,
+.swiper-slide-prev .slide-img{
+  animation: zoom-in 10s linear 0s 1 normal both;
+}
+
+.slide-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 8vw;
+  font-family: 'Yellowtail', cursive;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px #000;
+  color: #fff;
+  transform: translate(-50%,-50%);
+}
+
+.slide-img img{
+  object-fit: cover;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
+
+
+
+.slider {/*横幅94%で左右に余白を持たせて中央寄せ*/
+    width:94%;
+    margin:0 auto;
+    padding: 0;
+}
+
+.slider img {
+    width:60vw;/*スライダー内の画像を60vwにしてレスポンシブ化*/
+    height:auto;
+    border-radius: 10px;
+}
+
+.slider h2{
+  text-align: center;
+}
+
+.slider .slick-slide {
+  transform: scale(0.8);/*左右の画像のサイズを80%に*/
+  transition: all .5s;/*拡大や透過のアニメーションを0.5秒で行う*/
+  opacity: 0.5;/*透過50%*/
+}
+
+.slider .slick-slide.slick-center{
+  transform: scale(1);/*中央の画像のサイズだけ等倍に*/
+  opacity: 1;/*透過なし*/
+}
+
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+
+
+.slick-prev,
+.slick-next {
+    position: absolute;
+    top: 42%;
+    cursor: pointer;/*マウスカーソルを指マークに*/
+    outline: none;/*クリックをしたら出てくる枠線を消す*/
+    border-top: 2px solid #666;/*矢印の色*/
+    border-right: 2px solid #666;/*矢印の色*/
+    height: 15px;
+    width: 15px;
+}
+
+.slick-prev {/*戻る矢印の位置と形状*/
+    left: 2.5%;
+    transform: rotate(-135deg);
+}
+
+.slick-next {/*次へ矢印の位置と形状*/
+    right: -2.5%;
+    transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+    text-align:center;
+  margin:0;
+  padding: 0;
+}
+
+.slick-dots li {
+    display:inline-block;
+  margin:0 5px;
+}
+
+.slick-dots button {
+    color: transparent;
+    outline: none;
+    width:50px;/*ドットボタンのサイズ*/
+    height:20px;/*ドットボタンのサイズ*/
+    display:block;
+    border-radius: 3px;
+    background:#fff;/*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button{
+    background:#808080;/*ドットボタンの現在地表示の色*/
+}
+
+.sec04{
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.contact-text {
+    margin-top: 10px;
+}
+
+.sec04 h2{
+ font-size: 2vw;
+ margin: 0;
+}
+.contact-message{
+  font-size: 1vw;
+}
+
+
+.contact-mail {
+    font-size: 2vw;
+    font-weight: bold;
+    margin: 15px 0 15px;
+}
+
+.icon-area {
+    margin-top: 30px;
+}
+
+.icon-area .fab {
+    font-size: 3rem;
+    margin: 0 1rem;
+}
+
+/* footer */
+.footer {
+    background-color: #ddd;
+    padding: 30px 16px 10px;
+}
+
+.footer-list {
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.footer-item {
+    font-size: 1.2rem;
+}
+
+.copyright {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+@media(max-width:768px){
+
+/*　ハンバーガーボタン　*/
+
+.header {
+  display: block;
+  position: fixed;
+    z-index : 3;
+  left : 0px;
+  top   : 0px;
+  width : 100%;
+  height: 8vw;
+  text-align: left;
+  background-color: white;
+}
+
+.header h1{
+  margin: 0 0 0 5px;
+}
+
+.hamburger {
+  display : block;
+  position: fixed;
+  z-index : 3;
+  right : 13px;
+  top   : 0px;
+  width : 30px;
+  height: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+.hamburger span {
+  display : block;
+  position: absolute;
+  width   : 30px;
+  height  : 3px ;
+  left    : 6px;
+  background : #555;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition   : 0.3s ease-in-out;
+  transition        : 0.3s ease-in-out;
+}
+.hamburger span:nth-child(1) {
+  top: 2.2vw;
+}
+.hamburger span:nth-child(2) {
+  top: 4vw;
+}
+.hamburger span:nth-child(3) {
+  top: 5.8vw;
+}
+
+/* ナビ開いてる時のボタン */
+.hamburger.active span:nth-child(1) {
+  top : 16px;
+  left: 6px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform   : rotate(-45deg);
+  transform        : rotate(-45deg);
+}
+
+.hamburger.active span:nth-child(2),
+.hamburger.active span:nth-child(3) {
+  top: 16px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform   : rotate(45deg);
+  transform        : rotate(45deg);
+}
+
+nav.header_list {
+  position: fixed;
+  z-index : 2;
+  top  : 0;
+  left : 0;
+  color: #000;
+  background: #fff;
+  text-align: center;
+  transform: translateX(100%);
+  transition: all 0.6s;
+  width: 100%;
+}
+
+nav.header_list ul {
+  background: #ccc;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+nav.header_list ul li {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  border-bottom: 1px solid #fff;
+}
+nav.header_list ul li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+nav.header_list ul li:hover{
+  background :#ddd;
+}
+
+nav.header_list ul li a {
+  display: block;
+  color: #000;
+  padding: 1em 0;
+  text-decoration :none;
+}
+
+/* このクラスを、jQueryで付与・削除する */
+nav.header_list.active {
+  transform: translateX(0%);
+}
+
+.swiper-wrap{
+  height: 500px;
+}
+.slide-img img{
+  width: 100%;
+  height: 80vh;
+}
+
+section h1{
+  margin: 60px 0 20px;
+  font-size: 50px;
+}
+
+.sec02 .tab ul{
+  width: 100%;
+}
+
+.sec02 .tab li{
+  width: 25%;
+}
+
+.sec02 .tab li{
+  font-size: 2vw;
+}
+
+.slick-dots button {
+    width:10px;/*ドットボタンのサイズ*/
+    height:10px;/*ドットボタンのサイズ*/
+    border-radius: 50%;
+    background:#007aff;/*ドットボタンの色*/
+}
+
+.slick-dots li {
+    display:inline-block;
+  margin:0 3px;
+}
+
+.slider h2{
+  font-size: 16px;
+  margin: 10px;
+}
+
+.sec04 h2{
+ font-size: 4vw;
+}
+.contact-message{
+  font-size: 3vw;
+}
+
+
+.contact-mail {
+    font-size: 4vw;
+}
+
+.footer{
+  padding: 10px;
+}
+
+.footer-list{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px 0 10px;
+}
+
+.footer a{
+  font-size: 3vw;
+}
+.footer p{
+  margin: 10px 0 10px;
+  font-size: 3vw;
+}
+
+}
